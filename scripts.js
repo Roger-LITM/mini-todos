@@ -1,14 +1,9 @@
 
-let tasks = []; // {title: "dddddd", done: false}
+let tasks = []; 
 
 
 function renderEditor() {
     let inputEl = document.querySelector("#default-todo-panel .todo-editor > input");
-
-    //inputEl.onchange = (e) => {
-    //  console.log("text, ", e.target.value);
-    //    //console.log("input change: " , e); 
-    // };
 
     let addTask = () => {
         if (inputEl.value.length === 0) {
@@ -98,14 +93,23 @@ function renderTaskCtrlBar(tasks, taskIdx) {
     }
     upEl.innerText = "🠕";
     upEl.onclick = () => { 
-        ///
+        let a = tasks[taskIdx];
+        tasks[taskIdx] = tasks[taskIdx - 1];
+        tasks[taskIdx - 1] = a;
+        renderTaskItems();
     };
     ctrlbarEl.append(upEl);
 
     let downEl = document.createElement("button");
     downEl.innerText = "🠗";
+    if (taskIdx === tasks.length - 1){
+        downEl.disabled = true;
+    }
     downEl.onclick = () => {
-        ///
+        let a = tasks[taskIdx];
+        tasks[taskIdx] = tasks[taskIdx + 1];
+        tasks[taskIdx + 1] = a;
+        renderTaskItems();
     };
     ctrlbarEl.append(downEl);
 
