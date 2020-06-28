@@ -121,14 +121,6 @@ function renderTaskCtrlBar(tasks, taskIdx) {
     };
     ctrlbarEl.append(cancelEl);
 
-    let importantEl = document.createElement("button");
-    importantEl.innerText = "A";
-    importantEl.onclick = () => {
-        
-    }
-    ctrlbarEl.append(importantEl);
-    
-
     return ctrlbarEl;
 }
 renderEditor();
